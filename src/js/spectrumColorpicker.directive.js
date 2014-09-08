@@ -30,6 +30,10 @@
             setViewValue(color);
           });
         };
+        var onHide = function(color) {
+          onChange(color);
+          $scope.$emit('spectrum-hide', {});
+        };
         var onToggle = function() {
           $input.spectrum('toggle');
           return false;
@@ -38,7 +42,7 @@
           color: $ngModel.$viewValue,
           change: onChange,
           move: onChange,
-          hide: onChange
+          hide: onHide
         }, $scope.$eval(attrs.options));
 
 
